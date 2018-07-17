@@ -1,0 +1,9 @@
+[package]
+name = "outputting_vector"
+version = "0.1.0"
+authors = ["Patrick O'Brien <patrick@commonbond.co>"]
+
+[dependencies]
+rand = "0.5.3"
+rulinalg = "0.4.2"
+num = "0.2.0"
