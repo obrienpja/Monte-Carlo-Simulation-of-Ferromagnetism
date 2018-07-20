@@ -3,9 +3,10 @@ extern crate rand;
 
 use self::rand::Rng;
 use std::f64;
-use std::ops::Div;
 use std::fmt;
+use std::ops::Div;
 use std::ops::Sub;
+
 
 #[derive(Copy, Clone)]
 pub struct Spin {
@@ -50,4 +51,24 @@ impl fmt::Display for Spin {
     fn fmt(&self, f: &mut fmt::Formatter) -> fmt::Result {
         write!(f, "({},{},{})", self.x, self.y, self.z)
     }
+}
+
+
+pub struct SpinConfig{
+    pub spin_config: Vec<Spin>,
+}
+
+impl SpinConfig{
+    pub fn random_spin_config(n:i32) -> SpinConfig{
+        let mut spin_config_temp:Vec<Spin> = Vec::new();
+
+        for _i in 0..n{
+            spin_config_temp.push(Spin::normalized_spin(&mut Spin::new()));
+        }
+        SpinConfig{spin_config: spin_config_temp}
+    }
+}
+
+impl SpinConfig{
+
 }
