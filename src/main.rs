@@ -1,4 +1,4 @@
-extern crate rand;
+//extern crate rand;
 
 mod spin;
 mod exchange_matrix;
@@ -13,7 +13,10 @@ fn main()
 
     let mut ferro_exchange: ExchangeMatrix = ExchangeMatrix::ferromagnetic_exchange(10);
 
-    let test2:SpinConfig = MonteCarlo::run_monte_carlo(1000);
+    let mut test2:SpinConfig = MonteCarlo::run_monte_carlo_ferro(100000);
 
-    println!("The energy of the final spin configuration is: {}", ferro_exchange.calculate_energy(test2));
+//    println!("The energy of the final spin configuration is: {}",
+//             ferro_exchange.calculate_energy(test2));
+
+    test2.print_spin_config(10);
 }

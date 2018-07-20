@@ -70,5 +70,9 @@ impl SpinConfig{
 }
 
 impl SpinConfig{
-
+    pub fn print_spin_config(&mut self, size_of_config:usize) ->(){
+        for i in 0..size_of_config{
+            println!("{}", self.spin_config[i]);
+        }
+    }
 }
