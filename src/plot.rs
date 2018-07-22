@@ -19,80 +19,6 @@ pub fn example(c: Common)
     let mut fg = Figure::new();
     c.set_term(&mut fg);
 
-    fg.axes2d()
-        .set_title("Image fg4.1", &[])
-        .set_cb_range(Fix(-1.0), Fix(1.0))
-        .set_cb_ticks(Some((Fix(0.25), 1)), &[], &[])
-        .set_cb_label("Label", &[Rotate(0.0)])
-        .image(z1.iter(), zw, zh, Some((-4.0, -4.0, 4.0, 4.0)), &[]);
-
-    c.show(&mut fg, "fg4.1.gnuplot");
-
-    let mut fg = Figure::new();
-    c.set_term(&mut fg);
-
-    fg.axes3d()
-        .set_title("Surface fg4.2", &[])
-        .surface(z1.iter(), zw, zh, Some((-4.0, -4.0, 4.0, 4.0)), &[])
-        .set_x_label("X", &[])
-        .set_y_label("Y", &[])
-        .set_z_label("Z", &[])
-        .set_z_range(Fix(-1.0), Fix(1.0))
-        .set_z_ticks(Some((Fix(1.0), 1)), &[Mirror(false)], &[])
-        .set_cb_range(Fix(-1.0), Fix(1.0))
-        .set_view(45.0, 45.0);
-
-    c.show(&mut fg, "fg4.2.gnuplot");
-
-    let mut fg = Figure::new();
-    c.set_term(&mut fg);
-
-    fg.axes3d()
-        .set_title("Cube Helix Palette fg4.3", &[])
-        .surface(z1.iter(), zw, zh, Some((-4.0, -4.0, 4.0, 4.0)), &[])
-        .set_x_label("X", &[])
-        .set_y_label("Y", &[])
-        .set_z_label("Z", &[])
-        .set_z_range(Fix(-1.0), Fix(1.0))
-        .set_z_ticks(Some((Fix(1.0), 1)), &[Mirror(false)], &[])
-        .set_cb_range(Fix(-1.0), Fix(1.0))
-        .set_palette(HELIX)
-        .set_view(45.0, 45.0);
-
-    c.show(&mut fg, "fg4.3.gnuplot");
-
-    let mut fg = Figure::new();
-    c.set_term(&mut fg);
-
-    fg.axes3d()
-        .set_title("Gray Palette fg4.4", &[])
-        .surface(z1.iter(), zw, zh, Some((-4.0, -4.0, 4.0, 4.0)), &[])
-        .set_x_label("X", &[])
-        .set_y_label("Y", &[])
-        .set_z_label("Z", &[])
-        .set_z_range(Fix(-1.0), Fix(1.0))
-        .set_z_ticks(Some((Fix(1.0), 1)), &[Mirror(false)], &[])
-        .set_palette(GRAY)
-        .set_view(45.0, 45.0);
-
-    c.show(&mut fg, "fg4.4.gnuplot");
-
-    let mut fg = Figure::new();
-    c.set_term(&mut fg);
-
-    fg.axes3d()
-        .set_title("Black Body Palette fg4.5", &[])
-        .surface(z1.iter(), zw, zh, Some((-4.0, -4.0, 4.0, 4.0)), &[])
-        .set_x_label("X", &[])
-        .set_y_label("Y", &[])
-        .set_z_label("Z", &[])
-        .set_z_range(Fix(-1.0), Fix(1.0))
-        .set_z_ticks(Some((Fix(1.0), 1)), &[Mirror(false)], &[])
-        .set_palette(HOT)
-        .set_view(45.0, 45.0);
-
-    c.show(&mut fg, "fg4.5.gnuplot");
-
     let palette: [(f32, f32, f32, f32); 6] = [
         (0.00, 1.0, 0.0, 0.0),
         (0.33, 1.0, 0.0, 0.0),
@@ -107,7 +33,7 @@ pub fn example(c: Common)
 
     fg.axes3d()
         .set_title("Custom Palette fg4.5", &[])
-        .surface(z1.iter(), zw, zh, Some((-4.0, -4.0, 4.0, 4.0)), &[])
+        .surface(z1.iter(), zw, zh, Some((-40.0, -40.0, 4.0, 49.0)), &[])
         .set_x_label("X", &[])
         .set_y_label("Y", &[])
         .set_z_label("Z", &[])

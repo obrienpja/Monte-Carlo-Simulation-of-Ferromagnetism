@@ -1,10 +1,5 @@
-<<<<<<< HEAD
 extern crate rand;
 extern crate gnuplot;
-
-=======
-//extern crate rand;
->>>>>>> master
 
 mod spin;
 mod exchange_matrix;
@@ -19,13 +14,15 @@ use monte_carlo::MonteCarlo;
 fn main()
 {
 
-    let mut ferro_exchange: ExchangeMatrix = ExchangeMatrix::ferromagnetic_exchange(10);
+    common::Common::new().map(|c| { plot::example(c) }).unwrap();
 
-    let mut test2:SpinConfig = MonteCarlo::run_monte_carlo_ferro(100000);
+//    let mut ferro_exchange: ExchangeMatrix = ExchangeMatrix::ferromagnetic_exchange(10);
+
+//    let mut test2:SpinConfig = MonteCarlo::run_monte_carlo_ferro(100000);
 
 //    println!("The energy of the final spin configuration is: {}",
 //             ferro_exchange.calculate_energy(test2));
 
-    test2.print_spin_config(10);
+//    test2.print_spin_config(10);
 
 }
