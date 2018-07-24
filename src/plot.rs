@@ -1,7 +1,6 @@
-use common::*;
 use gnuplot::*;
 
-pub fn example(c: Common)
+pub fn example()
 {
     let zw = 61;
     let zh = 61;
@@ -10,26 +9,14 @@ pub fn example(c: Common)
         {
             for j in 0..zw
                 {
-                    let y = 8.0 * (i as f64) / zh as f64 - 4.0;
+                    let y = 8.0 * (i as f64) / zh as f64 - 8.0;
                     let x = 8.0 * (j as f64) / zw as f64 - 4.0;
                     z1.push(x.cos() * y.cos() / ((x * x + y * y).sqrt() + 1.0));
                 }
         }
 
     let mut fg = Figure::new();
-    c.set_term(&mut fg);
-
-    let palette: [(f32, f32, f32, f32); 6] = [
-        (0.00, 1.0, 0.0, 0.0),
-        (0.33, 1.0, 0.0, 0.0),
-        (0.33, 0.0, 1.0, 0.0),
-        (0.66, 0.0, 1.0, 0.0),
-        (0.66, 0.0, 0.0, 1.0),
-        (1.00, 0.0, 0.0, 1.0),
-    ];
-
-    let mut fg = Figure::new();
-    c.set_term(&mut fg);
+    fg.set_terminal("png", "fig.png");
 
     fg.axes3d()
         .set_title("Custom Palette fg4.5", &[])
@@ -39,8 +26,7 @@ pub fn example(c: Common)
         .set_z_label("Z", &[])
         .set_z_range(Fix(-1.0), Fix(1.0))
         .set_z_ticks(Some((Fix(1.0), 1)), &[Mirror(false)], &[])
-        .set_custom_palette(palette.iter().map(|&x| x))
         .set_view(45.0, 45.0);
 
-    c.show(&mut fg, "fg4.5.gnuplot");
+    fg.show();
 }

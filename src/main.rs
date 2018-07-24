@@ -4,7 +4,6 @@ extern crate gnuplot;
 mod spin;
 mod exchange_matrix;
 mod monte_carlo;
-mod common;
 mod plot;
 
 use spin::SpinConfig;
@@ -14,7 +13,7 @@ use monte_carlo::MonteCarlo;
 fn main()
 {
 
-    common::Common::new().map(|c| { plot::example(c) }).unwrap();
+    plot::example();
 
 //    let mut ferro_exchange: ExchangeMatrix = ExchangeMatrix::ferromagnetic_exchange(10);
 
