@@ -12,8 +12,7 @@ use monte_carlo::MonteCarlo;
 
 fn main()
 {
-
-    plot::example();
+    plot::plot(1.1, 2.2, 3.3);
 
 //    let mut ferro_exchange: ExchangeMatrix = ExchangeMatrix::ferromagnetic_exchange(10);
 
@@ -23,5 +22,4 @@ fn main()
 //             ferro_exchange.calculate_energy(test2));
 
 //    test2.print_spin_config(10);
-
 }
