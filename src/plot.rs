@@ -1,20 +1,14 @@
-use gnuplot::*;
+use std::fs::File;
+use std::io::prelude::*;
+use serde_json::{Value, Error};
 
-pub fn plot(x: f64, y: f64, z: f64, seq: usize)
+pub fn add_to_plot(x: f64, y: f64, z: f64, seq: usize)
 {
-    let mut fg = Figure::new();
-    fg.set_terminal("png", &format!("figs/fig{}.png", seq));
 
-    fg.axes3d()
-        .set_title("3D lines + points", &[])
-        .lines(vec![0.0, x], vec![0.0, y], vec![0.0, z],
-               &[LineWidth(5.0),
-                   PointSymbol('o'),
-                   Color("#ffaa77"),
-                   PointSize(2.0),
-                   ArrowType(Filled),
-                   ArrowSize(1.2)]);
+}
 
-
-    fg.show();
+pub fn write_plot() {
+//    let mut file = File::create("figs/data.json")?;
+//    file.write_all(b"Hello, world!")?;
+//    Ok(())
 }

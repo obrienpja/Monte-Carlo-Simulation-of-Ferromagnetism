@@ -8,7 +8,7 @@ use std::ops::Div;
 use std::ops::Sub;
 use plot;
 
-
+#[derive(Serialize, Deserialize, Debug)]
 #[derive(Copy, Clone)]
 pub struct Spin {
     pub x: f64,
@@ -79,7 +79,7 @@ impl SpinConfig{
 
     pub fn plot_spin_config(&mut self, size_of_config:usize) ->(){
         for i in 0..size_of_config{
-            plot::plot(self.spin_config[i].x, self.spin_config[i].y, self.spin_config[i].z, i);
+//            plot::plot(self.spin_config[i].x, self.spin_config[i].y, self.spin_config[i].z, i);
         }
     }
 }
