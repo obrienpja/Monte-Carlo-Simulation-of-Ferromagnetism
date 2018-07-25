@@ -7,7 +7,13 @@ pub fn plot(x: f64, y: f64, z: f64)
 
     fg.axes3d()
         .set_title("3D lines + points", &[])
-        .lines(vec![0, x], vec![0, y], vec![0, z], &[PointSymbol('o'), Color("#ffaa77"), PointSize(2.0), ArrowType(Filled), ArrowSize(10.2)]);
+        .lines(vec![0, 1], vec![0, 1], vec![0, 1],
+               &[LineWidth(5.0),
+                   PointSymbol('o'),
+                   Color("#ffaa77"),
+                   PointSize(2.0),
+                   ArrowType(Filled),
+                   ArrowSize(10.2)]);
 
 
     fg.show();
