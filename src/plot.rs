@@ -1,17 +1,13 @@
 use gnuplot::*;
 
-pub fn plot(x: f64, y: f64, z: f64)
+pub fn plot(x: f64, y: f64, z: f64, seq: usize)
 {
     let mut fg = Figure::new();
-    fg.set_terminal("png", "fig.png");
-
-    let mut xs: Vec<f64> = vec![0, x];
-    let mut ys: Vec<f64> = vec![0, y];
-    let mut zs: Vec<f64> = vec![0, z];
+    fg.set_terminal("png", &format!("figs/fig{}.png", seq));
 
     fg.axes3d()
         .set_title("3D lines + points", &[])
-        .lines(vec![0, xs], vec![0, ys], vec![0, zs],
+        .lines(vec![0.0, x], vec![0.0, y], vec![0.0, z],
                &[LineWidth(5.0),
                    PointSymbol('o'),
                    Color("#ffaa77"),

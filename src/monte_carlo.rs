@@ -26,7 +26,9 @@ impl MonteCarlo{
             sum_eng -= &ex_mat.select_mat(n, n) * (new_spin - old_spin).dot(spin_config.spin_config[n]);
 
             if sum_eng < 0.0 {
+                spin_config.plot_spin_config(10);
                 spin_config.spin_config[n] = new_spin;
+
             }
         }
         spin_config

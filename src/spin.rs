@@ -6,6 +6,7 @@ use std::f64;
 use std::fmt;
 use std::ops::Div;
 use std::ops::Sub;
+use plot;
 
 
 #[derive(Copy, Clone)]
@@ -78,7 +79,7 @@ impl SpinConfig{
 
     pub fn plot_spin_config(&mut self, size_of_config:usize) ->(){
         for i in 0..size_of_config{
-            println!("{}", self.spin_config[i]);
+            plot::plot(self.spin_config[i].x, self.spin_config[i].y, self.spin_config[i].z, i);
         }
     }
 }
