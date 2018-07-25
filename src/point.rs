@@ -12,10 +12,8 @@ impl fmt::Display for Point {
     }
 }
 
-//impl Point{
-//    pub fn print_spin_config(&mut self, size_of_config:usize) ->(){
-//        for i in 0..size_of_config{
-//            println!("{}", self.spin_config[i]);
-//        }
-//    }
-//}
+impl Point{
+    pub fn dot(self, second_point: Point) -> f64 {
+        self.x * second_point.x + self.y * second_point.y + self.z * second_point.z
+    }
+}
