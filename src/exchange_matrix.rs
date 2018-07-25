@@ -1,7 +1,11 @@
 extern crate rulinalg;
+extern crate num_complex;
 use self::rulinalg::matrix::{Matrix, BaseMatrix};
 use std::f64;
 use spin::SpinConfig;
+use point::Point;
+use self::num_complex::Complex;
+use self::f64::consts;
 
 pub struct ExchangeMatrix{
     pub exchange_matrix: Matrix<f64>
@@ -29,5 +33,13 @@ impl ExchangeMatrix{
             }
         }
         energy
+    }
+}
+
+
+impl ExchangeMatrix{
+    pub fn phase_factor(pt:Point, pt2:Point) -> Complex<f64>{
+        let phase:Complex<f64> = self::f64::consts::PI * Complex::i() * pt.dot(pt2);
+        phase.exp()
     }
 }
