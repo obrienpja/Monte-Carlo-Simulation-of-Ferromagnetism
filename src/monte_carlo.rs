@@ -12,7 +12,7 @@ pub struct MonteCarlo {
 impl MonteCarlo{
     pub fn run_monte_carlo(nitr:i32, ex_mat:&mut ExchangeMatrix) -> SpinConfig{
         let mut spin_config:SpinConfig = SpinConfig::random_spin_config(10);
-
+        let mut snapshots: Vec<SpinConfig>;
         let mut rng = rand::thread_rng();
         for _i in 0..nitr{
             let new_spin:Spin = Spin::normalized_spin(&mut Spin::new());
@@ -26,7 +26,7 @@ impl MonteCarlo{
             sum_eng -= &ex_mat.select_mat(n, n) * (new_spin - old_spin).dot(spin_config.spin_config[n]);
 
             if sum_eng < 0.0 {
-                spin_config.plot_spin_config(10);
+                snapshots.push(spin_config.clone());
                 spin_config.spin_config[n] = new_spin;
 
             }
