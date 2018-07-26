@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <!-- Latest compiled and minified plotly.js JavaScript -->
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+<div id="graph"></div>
+<script>
+    Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/3d-line1.csv', function(err, rows){
+        function unpack(rows, key) {
+            return rows.map(function(row)
+            { return row[key]; }); }
+
+        var x = unpack(rows , 'x');
+        var y = unpack(rows , 'y');
+        var z = unpack(rows , 'z');
+        var c = unpack(rows , 'color');
+        Plotly.plot('graph', [{
+            type: 'scatter3d',
+            mode: 'lines',
+            x: x,
+            y: y,
+            z: z,
+            opacity: 1,
+            line: {
+                width: 6,
+                color: c,
+                reversescale: false
+            }
+        }], {
+            height: 640
+        });
+    });
+</script>
+</body>
+</html>
