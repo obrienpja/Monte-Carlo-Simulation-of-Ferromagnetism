@@ -1,7 +1,7 @@
 use spin::{Spin,SpinConfig};
 use exchange_matrix::ExchangeMatrix;
 extern crate rand;
-
+use plot;
 use self::rand::Rng;
 
 pub struct MonteCarlo {
@@ -12,7 +12,7 @@ pub struct MonteCarlo {
 impl MonteCarlo{
     pub fn run_monte_carlo(nitr:i32, ex_mat:&mut ExchangeMatrix) -> SpinConfig{
         let mut spin_config:SpinConfig = SpinConfig::random_spin_config(10);
-        let mut snapshots: Vec<SpinConfig>;
+        let mut snapshots: Vec<SpinConfig> = vec!();
         let mut rng = rand::thread_rng();
         for _i in 0..nitr{
             let new_spin:Spin = Spin::normalized_spin(&mut Spin::new());
@@ -31,6 +31,9 @@ impl MonteCarlo{
 
             }
         }
+
+        plot::write_plot(snapshots);
+
         spin_config
     }
 }

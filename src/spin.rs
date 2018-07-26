@@ -54,7 +54,7 @@ impl fmt::Display for Spin {
     }
 }
 
-#[derive(Copy, Clone)]
+#[derive(Clone)]
 #[derive(Serialize, Deserialize, Debug)]
 pub struct SpinConfig{
     pub spin_config: Vec<Spin>,
