@@ -11,11 +11,12 @@ mod plot;
 mod lattice;
 mod point;
 
-use spin::SpinConfig;
+use spin::{Spin, SpinConfig};
 use exchange_matrix::ExchangeMatrix;
 use monte_carlo::MonteCarlo;
 use lattice::Lattice;
 use point::Point;
+use spin::IsingSpin;
 
 
 fn main()
@@ -35,4 +36,5 @@ fn main()
 //    println!("{}", points.lattice[13]);
 
     println!("{}", ExchangeMatrix::phase_factor(Point { x: 1.0, y: 1.0, z: 1.0 }, Point { x: 3.1, y: 1.0, z: 1.0 }));
+    println!("{}", Spin::create_ising_spin());
 }
