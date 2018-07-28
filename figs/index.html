@@ -22,39 +22,44 @@
             xobj.send(null);
         }
     </script>
+    <script>
+        // var request = new XMLHttpRequest();
+        // request.open('GET', 'data.json', false);  // `false` makes the request synchronous
+        // request.send(null);
+        //
+        // snapshots = JSON.parse(request.responseText);
+        function draw(index) {
+            Plotly.purge('graph');
+            Plotly.d3.json("data.json", function (err, rows) {
+                plots = [];
+                rows[index].spin_config.forEach(function (data) {
+                    plots.push({
+                        type: 'scatter3d',
+                        mode: 'lines',
+                        x: [0, data.x],
+                        y: [0, data.y],
+                        z: [0, data.z],
+                        opacity: 1,
+                        line: {
+                            width: 6,
+                            reversescale: false
+                        }
+                    });
+                });
 
+                Plotly.plot('graph', plots, {
+                    height: 840
+                });
+            });
+        }
+    </script>
 </head>
 <body>
+<input type="range" min="1" max="100" value="1" onchange="draw(this.value)">
+
 <div id="graph"></div>
-<script>
-    // var request = new XMLHttpRequest();
-    // request.open('GET', 'data.json', false);  // `false` makes the request synchronous
-    // request.send(null);
-    //
-    // snapshots = JSON.parse(request.responseText);
-
-    Plotly.d3.json("data.json", function (err, rows) {
-        plots = [];
-        rows[0].spin_config.forEach(function (data) {
-            plots.push({
-                type: 'scatter3d',
-                mode: 'lines',
-                x: [0, data.x],
-                y: [0, data.y],
-                z: [0, data.z],
-                opacity: 1,
-                line: {
-                    width: 6,
-                    reversescale: false
-                }
-            });
-        });
-
-        Plotly.plot('graph', plots, {
-            height: 840
-        });
-    });
-
-</script>
 </body>
+<script>
+    draw(1)
+</script>
 </html>
