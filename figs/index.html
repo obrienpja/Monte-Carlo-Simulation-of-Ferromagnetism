@@ -8,35 +8,72 @@
     <title>Document</title>
     <!-- Latest compiled and minified plotly.js JavaScript -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+
+    <script>
+        function loadJSON() {
+            var xobj = new XMLHttpRequest();
+            xobj.overrideMimeType("application/json");
+            xobj.open('GET', 'data.json', false);
+            xobj.onreadystatechange = function () {
+                if (xobj.readyState === 4 && xobj.status === "200") {
+                    return xobj.responseText;
+                }
+            };
+            xobj.send(null);
+        }
+    </script>
+
 </head>
 <body>
 <div id="graph"></div>
 <script>
-    Plotly.d3.csv('https://raw.githubusercontent.com/plotly/datasets/master/3d-line1.csv', function(err, rows){
-        function unpack(rows, key) {
-            return rows.map(function(row)
-            { return row[key]; }); }
+    var request = new XMLHttpRequest();
+    request.open('GET', 'data.json', false);  // `false` makes the request synchronous
+    request.send(null);
 
-        var x = unpack(rows , 'x');
-        var y = unpack(rows , 'y');
-        var z = unpack(rows , 'z');
-        var c = unpack(rows , 'color');
-        Plotly.plot('graph', [{
+    snapshots = JSON.parse(request.responseText);
+
+    // Plotly.d3.json()
+
+    // Plotly.d3.json("data.json", function (err, rows) {
+    // function unpack(rows, key) {
+    //     return rows.map(function (row) {
+    //         return row[key];
+    //     });
+    // }
+    //
+    // var x = unpack(rows, 'x');
+    // var y = unpack(rows, 'y');
+    // var z = unpack(rows, 'z');
+    // var c = unpack(rows, 'color');
+    Plotly.plot('graph', [{
+        type: 'scatter3d',
+        mode: 'lines',
+        x: [0, 1],
+        y: [0, 1],
+        z: [0, 1],
+        opacity: 1,
+        line: {
+            width: 6,
+            reversescale: false
+        }
+    },
+        {
             type: 'scatter3d',
             mode: 'lines',
-            x: x,
-            y: y,
-            z: z,
+            x: [0, .9293],
+            y: [0, .3849],
+            z: [0, .12903],
             opacity: 1,
             line: {
                 width: 6,
-                color: c,
                 reversescale: false
             }
         }], {
-            height: 640
-        });
+        height: 640
     });
+    // });
+
 </script>
 </body>
 </html>
