@@ -32,11 +32,16 @@ fn main()
     test2.print_spin_config();
 
 //    let lat = Lattice::new();
-    let points = Lattice::generate_square_lattice();
+    let points = Lattice::generate_1d_lattice();
 //    println!("{}", points.lattice[13]);
 
     println!("{}", ExchangeMatrix::phase_factor(Point { x: 1.0, y: 1.0, z: 1.0 }, Point { x: 3.1, y: 1.0, z: 1.0 }));
     println!("{}", Spin::create_random_ising_spin());
 
-    println!("{}", 5-4*(5/4))
+//    for i in 0..16{
+//        Lattice::map_to_site(i,4);
+//    }
+    for i in 0..4{
+        println!("{}", Lattice::neighbor_list(0,1,4,4)[i])
+    }
 }
