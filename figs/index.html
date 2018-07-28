@@ -33,46 +33,27 @@
 
     snapshots = JSON.parse(request.responseText);
 
-    // Plotly.d3.json()
+    Plotly.d3.json("data.json", function (err, rows) {
+        plots = [];
+        rows[0].spin_config.forEach(function (data) {
+            plots.push({
+                type: 'scatter3d',
+                mode: 'lines',
+                x: [0, data.x],
+                y: [0, data.y],
+                z: [0, data.z],
+                opacity: 1,
+                line: {
+                    width: 6,
+                    reversescale: false
+                }
+            });
+        });
 
-    // Plotly.d3.json("data.json", function (err, rows) {
-    // function unpack(rows, key) {
-    //     return rows.map(function (row) {
-    //         return row[key];
-    //     });
-    // }
-    //
-    // var x = unpack(rows, 'x');
-    // var y = unpack(rows, 'y');
-    // var z = unpack(rows, 'z');
-    // var c = unpack(rows, 'color');
-    Plotly.plot('graph', [{
-        type: 'scatter3d',
-        mode: 'lines',
-        x: [0, 1],
-        y: [0, 1],
-        z: [0, 1],
-        opacity: 1,
-        line: {
-            width: 6,
-            reversescale: false
-        }
-    },
-        {
-            type: 'scatter3d',
-            mode: 'lines',
-            x: [0, .9293],
-            y: [0, .3849],
-            z: [0, .12903],
-            opacity: 1,
-            line: {
-                width: 6,
-                reversescale: false
-            }
-        }], {
-        height: 640
+        Plotly.plot('graph', plots, {
+            height: 640
+        });
     });
-    // });
 
 </script>
 </body>
