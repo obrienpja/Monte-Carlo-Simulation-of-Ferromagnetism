@@ -84,3 +84,14 @@ impl SpinConfig{
         }
     }
 }
+
+pub struct IsingSpin{
+    val:i32
+}
+
+impl Spin{
+    pub fn create_ising_spin() -> Spin{
+        let mut rng = rand::thread_rng();
+        Spin{x: 0.0, y: 0.0, z:(rng.gen_range(0, 2)*2 - 1) as f64}
+    }
+}
