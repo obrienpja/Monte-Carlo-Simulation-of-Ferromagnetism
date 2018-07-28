@@ -27,11 +27,11 @@
 <body>
 <div id="graph"></div>
 <script>
-    var request = new XMLHttpRequest();
-    request.open('GET', 'data.json', false);  // `false` makes the request synchronous
-    request.send(null);
-
-    snapshots = JSON.parse(request.responseText);
+    // var request = new XMLHttpRequest();
+    // request.open('GET', 'data.json', false);  // `false` makes the request synchronous
+    // request.send(null);
+    //
+    // snapshots = JSON.parse(request.responseText);
 
     Plotly.d3.json("data.json", function (err, rows) {
         plots = [];
@@ -51,7 +51,7 @@
         });
 
         Plotly.plot('graph', plots, {
-            height: 640
+            height: 840
         });
     });
 
