@@ -6,8 +6,9 @@ use std::f64;
 use std::fmt;
 use std::ops::Div;
 use std::ops::Sub;
+use plot;
 
-
+#[derive(Serialize, Deserialize, Debug)]
 #[derive(Copy, Clone)]
 pub struct Spin {
     pub x: f64,
@@ -53,7 +54,15 @@ impl fmt::Display for Spin {
     }
 }
 
+impl Spin{
+    pub fn create_random_ising_spin() -> Spin{
+        let mut rng = rand::thread_rng();
+        Spin{x: 0.0, y: 0.0, z:(rng.gen_range(0, 2)*2 - 1) as f64}
+    }
+}
 
+#[derive(Clone)]
+#[derive(Serialize, Deserialize, Debug)]
 pub struct SpinConfig{
     pub spin_config: Vec<Spin>,
 }
@@ -70,9 +79,31 @@ impl SpinConfig{
 }
 
 impl SpinConfig{
-    pub fn print_spin_config(&mut self, size_of_config:usize) ->(){
-        for i in 0..size_of_config{
+    pub fn random_ising_spin_config(n:i32) -> SpinConfig{
+        let mut spin_config_temp:Vec<Spin> = Vec::new();
+
+        for _i in 0..n{
+            spin_config_temp.push(Spin::create_random_ising_spin());
+        }
+        SpinConfig{spin_config: spin_config_temp}
+    }
+}
+
+impl SpinConfig{
+    pub fn print_spin_config(&mut self) ->(){
+        for i in 0..self.spin_config.len(){
             println!("{}", self.spin_config[i]);
         }
     }
+
+    pub fn plot_spin_config(&mut self, size_of_config:usize) ->(){
+        for i in 0..size_of_config{
+//            plot::plot(self.spin_config[i].x, self.spin_config[i].y, self.spin_config[i].z, i);
+        }
+    }
 }
+
+pub struct IsingSpin{
+    val:i32
+}
+
