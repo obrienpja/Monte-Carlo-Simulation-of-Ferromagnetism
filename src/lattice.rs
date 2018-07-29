@@ -3,9 +3,9 @@ use std::prelude::v1::Vec;
 use std::fmt;
 
 pub struct Site{
-    x:f64,
-    y:f64,
-    z:f64
+    pub x:f64,
+    pub y:f64,
+    pub z:f64
 }
 
 impl fmt::Display for Site {
@@ -31,10 +31,10 @@ impl Lattice {
 }
 
 impl Lattice{
-    pub fn generate_square_lattice() -> Lattice{
+    pub fn generate_square_lattice(n_x:i32, n_y:i32) -> Lattice{
         let mut lat:Vec<Site> = Vec::new();
-        for j in 0..10{
-            for i in 0..10 {
+        for j in 0..n_y{
+            for i in 0..n_x {
                 lat.push(Site { x: i as f64, y: j as f64, z: 0.0 });
             }
         }
@@ -43,7 +43,7 @@ impl Lattice{
 }
 
 impl Lattice{
-    fn map_to_index(m_x:i32, m_y:i32, n_x:i32) -> i32{
+    pub fn map_to_index(m_x:i32, m_y:i32, n_x:i32) -> i32{
         m_y*n_x + m_x
     }
 }
