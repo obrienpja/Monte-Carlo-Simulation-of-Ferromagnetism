@@ -8,7 +8,11 @@
     <title>Document</title>
     <!-- Latest compiled and minified plotly.js JavaScript -->
     <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
-
+    <!--// var request = new XMLHttpRequest();-->
+    <!--// request.open('GET', 'data.json', false);  // `false` makes the request synchronous-->
+    <!--// request.send(null);-->
+    <!--//-->
+    <!--// snapshots = JSON.parse(request.responseText);-->
     <script>
         function loadJSON() {
             var xobj = new XMLHttpRequest();
@@ -23,11 +27,6 @@
         }
     </script>
     <script>
-        // var request = new XMLHttpRequest();
-        // request.open('GET', 'data.json', false);  // `false` makes the request synchronous
-        // request.send(null);
-        //
-        // snapshots = JSON.parse(request.responseText);
         function draw(index) {
             Plotly.purge('graph');
             Plotly.d3.json("data.json", function (err, rows) {
