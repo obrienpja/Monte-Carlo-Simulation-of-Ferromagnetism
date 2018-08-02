@@ -2,7 +2,7 @@ extern crate rulinalg;
 extern crate num_complex;
 use self::rulinalg::matrix::{Matrix, BaseMatrix};
 use std::f64;
-use spin::SpinConfig;
+use spin::SpinConfiguration;
 use point::Point;
 use self::num_complex::Complex;
 use self::f64::consts;
@@ -24,7 +24,7 @@ impl ExchangeMatrix{
         self.exchange_matrix.select(&[r], &[c]).data()[0]
     }
 
-    pub fn calculate_energy(&mut self, spin_config:SpinConfig) -> f64{
+    pub fn calculate_energy(&mut self, spin_config:SpinConfiguration) -> f64{
         let mut energy:f64 = 0.0;
 
         for i in 0..10{
