@@ -1,15 +1,10 @@
-extern crate gnuplot;
-use self::gnuplot::*;
+use std::fs::File;
+use std::io::prelude::*;
+use serde_json::{Value, Error};
+use SpinConfig;
+use serde_json;
 
-pub fn plot(x: f64, y: f64, z: f64)
-{
-    let mut fg = Figure::new();
-    fg.set_terminal("png", "fig.png");
-
-    fg.axes3d()
-        .set_title("3D lines + points", &[])
-        .lines(vec![0.0, x], vec![0.0, y], vec![0.0, z], &[PointSymbol('o'), Color("#ffaa77"), PointSize(2.0), ArrowType(Filled), ArrowSize(10.2)]);
-
-
-    fg.show();
+pub fn write_plot(spin_configs: Vec<SpinConfig>) {
+    let mut file = File::create("figs/data.json").unwrap();
+    write!(file, "{}", serde_json::to_string(&spin_configs).unwrap());
 }
