@@ -3,3 +3,4 @@
 .idea
 *.iml
 *.lock
+data.json
