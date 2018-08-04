@@ -24,12 +24,12 @@ impl ExchangeMatrix{
         self.exchange_matrix.select(&[r], &[c]).data()[0]
     }
 
-    pub fn calculate_energy(&mut self, spin_config:SpinConfiguration) -> f64{
+    pub fn calculate_energy(&mut self, spin_configuration:SpinConfiguration) -> f64{
         let mut energy:f64 = 0.0;
 
         for i in 0..10{
             for j in 0..10{
-                energy += (spin_config.spin_config[i]).dot(spin_config.spin_config[j]) * self.select_mat(i, j)
+                energy += (spin_configuration.spin_configuration[i]).dot(spin_configuration.spin_configuration[j]) * self.select_mat(i, j)
             }
         }
         energy

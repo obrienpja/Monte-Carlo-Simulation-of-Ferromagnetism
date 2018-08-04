@@ -66,41 +66,41 @@ impl Spin{
 #[derive(Clone)]
 #[derive(Serialize, Deserialize, Debug)]
 pub struct SpinConfiguration{
-    pub spin_config: Vec<Spin>,
+    pub spin_configuration: Vec<Spin>,
 }
 
 impl SpinConfiguration{
-    pub fn random_spin_config(n:i32) -> SpinConfiguration{
-        let mut spin_config_temp:Vec<Spin> = Vec::new();
+    pub fn random_spin_configuration(n:i32) -> SpinConfiguration{
+        let mut spin_configuration_temp:Vec<Spin> = Vec::new();
 
         for _i in 0..n{
-            spin_config_temp.push(Spin::normalized_spin(&mut Spin::new()));
+            spin_configuration_temp.push(Spin::normalized_spin(&mut Spin::new()));
         }
-        SpinConfiguration{spin_config: spin_config_temp}
+        SpinConfiguration{spin_configuration: spin_configuration_temp}
     }
 }
 
 impl SpinConfiguration{
-    pub fn random_ising_spin_config(n:i32) -> SpinConfiguration{
-        let mut spin_config_temp:Vec<Spin> = Vec::new();
+    pub fn random_ising_spin_configuration(n:i32) -> SpinConfiguration{
+        let mut spin_configuration_temp:Vec<Spin> = Vec::new();
 
         for _i in 0..n{
-            spin_config_temp.push(Spin::create_random_ising_spin());
+            spin_configuration_temp.push(Spin::create_random_ising_spin());
         }
-        SpinConfiguration{spin_config: spin_config_temp}
+        SpinConfiguration{spin_configuration: spin_configuration_temp}
     }
 }
 
 impl SpinConfiguration{
-    pub fn print_spin_config(&mut self) ->(){
-        for i in 0..self.spin_config.len(){
-            println!("{}", self.spin_config[i]);
+    pub fn print_spin_configuration(&mut self) ->(){
+        for i in 0..self.spin_configuration.len(){
+            println!("{}", self.spin_configuration[i]);
         }
     }
 
-    pub fn plot_spin_config(&mut self, size_of_config:usize) ->(){
+    pub fn plot_spin_configuration(&mut self, size_of_config:usize) ->(){
         for i in 0..size_of_config{
-//            plot::plot(self.spin_config[i].x, self.spin_config[i].y, self.spin_config[i].z, i);
+//            plot::plot(self.spin_configuration[i].x, self.spin_configuration[i].y, self.spin_configuration[i].z, i);
         }
     }
 }
@@ -118,18 +118,19 @@ impl IsingSpin{
     }
 }
 
+#[derive(Copy, Clone)]
 pub struct IsingSpinConfiguration{
-    pub spin_config: Vec<IsingSpin>
+    pub spin_configuration: Vec<IsingSpin>
 }
 
 impl IsingSpinConfiguration{
-    pub fn random_ising_spin_config(n:i32) -> IsingSpinConfiguration{
-        let mut ising_spin_config:Vec<IsingSpin> = Vec::new();
+    pub fn random_ising_spin_configuration(n:i32) -> IsingSpinConfiguration{
+        let mut ising_spin_configuration:Vec<IsingSpin> = Vec::new();
 
         for _i in 0..n{
-            ising_spin_config.push(IsingSpin::create_random_ising_spin());
+            ising_spin_configuration.push(IsingSpin::create_random_ising_spin());
         }
-        IsingSpinConfiguration{spin_config: ising_spin_config}
+        IsingSpinConfiguration{spin_configuration: ising_spin_configuration}
     }
 }
 
@@ -168,15 +169,9 @@ impl fmt::Display for IsingSpin {
 }
 
 impl IsingSpinConfiguration{
-    pub fn print_spin_config(&mut self) ->(){
-        for i in 0..self.spin_config.len(){
-            println!("{}", self.spin_config[i]);
+    pub fn print_spin_configuration(&mut self) ->(){
+        for i in 0..self.spin_configuration.len(){
+            println!("{}", self.spin_configuration[i]);
         }
     }
-
-//    pub fn plot_spin_config(&mut self, size_of_config:usize) ->(){
-//        for i in 0..size_of_config{
-////            plot::plot(self.spin_config[i].x, self.spin_config[i].y, self.spin_config[i].z, i);
-//        }
-//    }
 }
