@@ -59,7 +59,7 @@ pub struct MonteCarlo {
 //        }
 //    }
 
-    pub fn run_ising_monte_carlo(n_x:i32, n_y:i32, spin_configuration:IsingSpinConfiguration, number_of_settling_iterations: i32, number_of_data_collection_iterations: i32, mc_temperature: f64) -> f64 {
+    pub fn run_ising_monte_carlo(n_x:i32, n_y:i32, number_of_settling_iterations: i32, number_of_data_collection_iterations: i32, mc_temperature: f64) -> f64 {
 
         let j_eng = 1.0;
         let neighbor_number = 4;
@@ -67,7 +67,7 @@ pub struct MonteCarlo {
         let mut square_lattice = Lattice::generate_square_lattice(n_x, n_y);
         let mut energy_list: Vec<f64> = Vec::new();
 
-//        let mut spin_configuration: IsingSpinConfiguration = IsingSpinConfiguration::random_ising_spin_configuration(n_x * n_y);
+        let mut spin_configuration: IsingSpinConfiguration = IsingSpinConfiguration::random_ising_spin_configuration(n_x * n_y);
 
 //        spin_configuration.print_spin_configuration();
 
@@ -130,7 +130,7 @@ impl MonteCarlo {
         let ising_configuration = IsingSpinConfiguration::random_ising_spin_configuration(n_x * n_y);
         for temperature in 0..81{
             println!("{}", temperature);
-            average_energy_vs_temperature.push(run_ising_monte_carlo(n_x, n_y, ising_configuration.clone(), 20000, 20000, 0.05 * temperature as f64 + 1.0));
+            average_energy_vs_temperature.push(run_ising_monte_carlo(n_x, n_y, 20000, 20000, 0.05 * temperature as f64 + 1.0));
         }
         average_energy_vs_temperature
     }

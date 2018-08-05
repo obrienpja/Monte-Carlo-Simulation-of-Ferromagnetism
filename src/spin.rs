@@ -118,7 +118,11 @@ impl IsingSpin{
     }
 }
 
-#[derive(Copy, Clone)]
+//impl Clone for Vec<IsingSpin> {
+//    fn clone(&self) -> Vec { *self }
+//}
+
+//#[derive(Copy, Clone)]
 pub struct IsingSpinConfiguration{
     pub spin_configuration: Vec<IsingSpin>
 }
