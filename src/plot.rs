@@ -8,11 +8,12 @@ use serde_json;
 struct CartesianPoint {
     x: f64,
     y: f64,
-    z: Option<f64>
+    z: Option<f64>,
 }
 
-trait Plot {
-    fn get_points() -> Vec<CartesianPoint>;
+struct Plot {
+    data: Vec<CartesianPoint>,
+    plot_type: String,
 }
 
 
