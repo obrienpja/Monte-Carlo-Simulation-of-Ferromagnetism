@@ -1,5 +1,6 @@
 use spin::{Spin, IsingSpin, SpinConfiguration, IsingSpinConfiguration};
 use lattice::{Site, Lattice};
+use num::abs;
 
 pub fn boltzmann_factor(energy:f64, temperature:f64) -> f64{
     let phase:f64 = -energy/temperature;
@@ -50,4 +51,12 @@ pub fn running_total_squared(vector:Vec<f64>) -> Vec<f64>{
 
 pub fn average(numbers: &[f64]) -> f64 {
     numbers.iter().sum::<f64>() / numbers.len() as f64
+}
+
+pub fn magnetization(spin_config:&IsingSpinConfiguration) -> f64{
+    let mut mag = 0.0;
+    for spin in &spin_config.spin_configuration{
+        mag += spin.spin_value;
+    }
+    abs(mag/(spin_config.spin_configuration.len() as f64))
 }
