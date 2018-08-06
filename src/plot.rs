@@ -5,19 +5,24 @@ use spin::SpinConfiguration;
 use serde_json;
 
 #[derive(Serialize, Deserialize, Debug)]
-struct CartesianPoint {
-    x: f64,
-    y: f64,
-    z: Option<f64>,
+pub struct CartesianPoint {
+    pub x: f64,
+    pub y: f64,
+    pub z: Option<f64>,
 }
 
-struct Plot {
-    data: Vec<CartesianPoint>,
-    plot_type: String,
+#[derive(Serialize, Deserialize, Debug)]
+pub struct Chart {
+    pub data: Vec<CartesianPoint>,
+    pub plot_type: String,
+}
+
+trait Plot {
+    fn get_plot() -> Chart;
 }
 
 
-pub fn write_plot(spin_configs: Vec<SpinConfiguration>) {
+pub fn write_plot(chart: Chart) {
     let mut file = File::create("figs/data.json").unwrap();
-    write!(file, "{}", serde_json::to_string(&spin_configs).unwrap());
+    write!(file, "{}", serde_json::to_string(&chart).unwrap());
 }

@@ -77,7 +77,7 @@ impl Lattice{
 impl Lattice{
     pub fn print_lattice(&mut self) ->(){
         for i in 0..self.lattice.len(){
-            println!("{}", self.lattice[i]);
+//            println!("{}", self.lattice[i]);
         }
     }
 }
