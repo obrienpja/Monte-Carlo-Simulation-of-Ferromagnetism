@@ -46,8 +46,20 @@
                     });
                 });
 
-                Plotly.plot('graph', plots, {
-                    height: 840
+              var layout = {
+                title: 'Title of the Graph',
+                xaxis: {
+                  title: 'x-axis title'
+                },
+                yaxis: {
+                  title: 'y-axis title'
+                },
+                width: 400,
+                height: 400,
+                xanchor: middle
+              };
+                Plotly.plot('graph', plots, layout, {
+                    height: 1200
                 });
             });
         }

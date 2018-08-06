@@ -36,6 +36,18 @@ pub fn running_total(vector:Vec<f64>) -> Vec<f64>{
     total
 }
 
+pub fn running_total_squared(vector:Vec<f64>) -> Vec<f64>{
+    let mut total:Vec<f64> = Vec::new();
+    for i in 0..vector.len() {
+        let mut sum_of_engs = 0.0;
+        for j in 0..i+1 {
+            sum_of_engs += vector[j];
+        }
+        total.push(sum_of_engs.powf(2.0));
+    }
+    total
+}
+
 pub fn average(numbers: &[f64]) -> f64 {
     numbers.iter().sum::<f64>() / numbers.len() as f64
 }

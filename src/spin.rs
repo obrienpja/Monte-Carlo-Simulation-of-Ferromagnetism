@@ -23,6 +23,7 @@ impl Spin {
         let mut rng = rand::thread_rng();
         Spin { x: rng.gen::<f64>(), y: rng.gen::<f64>(), z: rng.gen::<f64>() }
     }
+
     pub fn normalized_spin(&mut self) -> Spin
     {
         let normalization = (self.x.powf(2.0) + self.y.powf(2.0) + self.z.powf(2.0)).sqrt();
@@ -31,6 +32,7 @@ impl Spin {
         self.z /= normalization;
         *self
     }
+
     pub fn dot(self, second_spin: Spin) -> f64 {
         self.x * second_spin.x + self.y * second_spin.y + self.z * second_spin.z
     }
@@ -118,11 +120,6 @@ impl IsingSpin{
     }
 }
 
-//impl Clone for Vec<IsingSpin> {
-//    fn clone(&self) -> Vec { *self }
-//}
-
-//#[derive(Copy, Clone)]
 pub struct IsingSpinConfiguration{
     pub spin_configuration: Vec<IsingSpin>
 }
