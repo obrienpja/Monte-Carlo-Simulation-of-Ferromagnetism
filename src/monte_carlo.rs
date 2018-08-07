@@ -41,14 +41,12 @@ pub fn run_ising_monte_carlo(n_x: i32,
                              number_of_settling_iterations: i32,
                              number_of_data_collection_iterations: i32,
                              mc_temperature: f64,
-                             mut initial_spin_configuration: IsingSpinConfiguration) -> f64 {
+                             mut spin_configuration: IsingSpinConfiguration) -> f64 {
     let j_eng = 1.0;
     let neighbor_number = 4;
     let mut site_energy = 0.0;
     let mut square_lattice = Lattice::generate_square_lattice(n_x, n_y);
     let mut energy_list: Vec<f64> = Vec::new();
-
-    let mut spin_configuration: IsingSpinConfiguration = initial_spin_configuration;
 
     let mut random_number_generator = rand::thread_rng();
     let mut accepted = 0;
