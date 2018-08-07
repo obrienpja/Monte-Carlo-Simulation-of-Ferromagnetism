@@ -1,4 +1,3 @@
-use monte_carlo::MonteCarlo;
 use spin::{SpinConfiguration};
 
 struct SimulatedAnnealing{

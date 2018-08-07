@@ -120,6 +120,7 @@ impl IsingSpin{
     }
 }
 
+#[derive(Clone)]
 pub struct IsingSpinConfiguration{
     pub spin_configuration: Vec<IsingSpin>
 }
