@@ -15,6 +15,7 @@ pub struct CartesianPoint {
 pub struct Chart {
     pub data: Vec<CartesianPoint>,
     pub plot_type: String,
+    pub plot_name: String
 }
 
 trait Plot {
